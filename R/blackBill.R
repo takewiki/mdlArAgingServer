@@ -16,14 +16,13 @@ blackBillServer <- function(input,output,session,erp_token) {
   text_blackBill_FProjectNumber = tsui::var_text('text_blackBill_FProjectNumber')
   #上传数据
   shiny::observeEvent(input$btn_blackBill_upload,{
-    print(1)
     if(is.null(var_file_export_baseInfo())){
       tsui::pop_notice("请先上传文件")
 
     }else{
       file_name = var_file_export_baseInfo()
       #读取excel------------------------------
-      data <- readxl::read_excel(file_name,col_types = c("text", "text", "text"))
+      data <- readxl::read_excel(file_name,col_types = c("text", "text", "date"))
       data = as.data.frame(data)
 
       data = tsdo::na_standard(data)
@@ -44,7 +43,6 @@ blackBillServer <- function(input,output,session,erp_token) {
   #查询数据
 
   shiny::observeEvent(input$btn_blackBill_view,{
-    print(2)
   data = mdlArAgingPkg::blackBill_view(token = erp_token)
   tsui::run_dataTable2(id ='dt_resultView_blackBill' ,data =data )
 
@@ -53,7 +51,6 @@ blackBillServer <- function(input,output,session,erp_token) {
   #删除数据
 
   shiny::observeEvent(input$btn_blackBill_delete,{
-    print(3)
     if(text_blackBill_FProjectNumber() == ''){
       tsui::pop_notice("请填写需要删除的项目号")
 
