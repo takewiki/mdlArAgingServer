@@ -4,7 +4,7 @@
 \alias{blackBillServer}
 \title{处理逻辑}
 \usage{
-blackBillServer(input, output, session, dms_token)
+blackBillServer(input, output, session, erp_token)
 }
 \arguments{
 \item{input}{输入}
