@@ -13,7 +13,7 @@ customerDueDaysServer(input, output, session, erp_token)
 
 \item{session}{会话}
 
-\item{dms_token}{口令}
+\item{erp_token}{口令}
 }
 \value{
 返回值
